@@ -1,30 +1,68 @@
-# Critical Section Problem & Peterson's Algorithm Solution
+# Peterson’s Algorithm: Critical Section Problem Solution
 
-This project is a practical demonstration of synchronization mechanisms in Operating Systems, specifically focusing on solving the **Critical Section Problem** using **Peterson's Algorithm**.
+This project demonstrates the **Critical Section Problem** in multithreading and provides a software-based solution using **Peterson’s Algorithm**. Developed for the **IT2106 – Operating Systems** module.
 
+---
 
-## 📌 Project Overview
-[cite_start]The goal of this project is to demonstrate how synchronization mechanisms work to manage shared resources between multiple threads[cite: 10]. We have implemented two versions of a counter incrementation program:
+### 🎓 Academic Context
+* **Institution:** CINEC Campus
+* **Course:** BSc (Hons) Software Engineering
+* **Module:** IT2106 – Operating Systems
+* **Assignment:** Group Project - Batch 05
+* **Due Date:** 17th January 2026
 
-1.  **Unsynchronized Version**: Demonstrates a **Race Condition** where two threads (t1 and t2) overwrite each other's work while incrementing a shared counter to 200,000.
-2.  [cite_start]**Synchronized Version**: Implements **Peterson’s Algorithm** (a software-based solution for two processes) to ensure the counter reaches the exact expected value[cite: 17, 25].
+---
 
-## 🛠️ Implementation Details
-[cite_start]The solution satisfies the three fundamental requirements of the critical-section problem[cite: 10, 11]:
+### 📝 Project Overview
+In this project, the Critical Section issue in multithreading is demonstrated. It has two versions:
+* **Unsynchronized Version:** This is what happens when a race condition occurs.
+* **Synchronized Version:** Displays the way the Algorithm by Peterson manages to solve the problem.
 
-* **Mutual Exclusion**: Only one thread accesses the critical section (the `increment()` method) at a time using `flag` and `turn` variables.
-* **Progress**: If no thread is in the critical section, a thread wishing to enter can do so without being blocked by processes outside the critical section.
-* **Bounded Waiting**: The `turn` variable ensures that no thread waits indefinitely to enter its critical section, as it gives the "turn" to the other process after setting its own flag.
+---
 
-## 📂 Project Structure
-* `UnsynchronizedVersion/`: Contains the original code demonstrating the race condition.
-* `SyncronizedVersion/`: Contains the fixed implementation using Peterson's Algorithm.
-* `PetersonAlgorithm.java`: The core synchronization logic using `volatile` variables to ensure instant data exchange.
+### 📂 Project Structure
+The project contains two major folders:
 
-## 🚀 Compilation and Execution
-To run the project, ensure you have Java installed and follow these steps:
+1.  **UnsynchronizedVersion**
+    * `Main.java` - Entry point for the unsynchronized execution.
+    * `Counter.java` - Holds the shared data and the critical section.
+    * `ProcessThread.java` - Represents the thread adding to the shared counter.
 
-### Running Unsynchronized Version
-```bash
-javac UnsynchronizedVersion/*.java
-java UnsynchronizedVersion.Main
+2.  **SyncronizedVersion**
+    * `Main.java` - Entry point for the Peterson's algorithm solution.
+    * `PetersonAlgorithm.java` - Core logic for thread synchronization.
+    * `Mycounter.java` - The shared counter used in the synchronized version.
+    * `ProcessThread.java` - Thread implementation that utilizes Peterson's locks.
+
+---
+
+### ⚙️ How to Compile and Run
+You need to open your **IntelliJ IDEA Community Edition** and do the following:
+
+#### 🔴 To execute Unsynchronized Version:
+1.  Select `UnsynchronizedVersion` folder.
+2.  **Compile:** `javac Main.java`
+3.  **Run:** `java Main`
+
+#### 🟢 To execute Synchronized Version (Solution of Peterson's Algorithm):
+1.  Open the `SyncronizedVersion` folder.
+2.  **Compile:** `javac Main.java`
+3.  **Run:** `java Main`
+
+---
+
+### 📊 Expected Results
+| Version | Description | Expected Final Count | Actual Final Count |
+| :--- | :--- | :--- | :--- |
+| **Unsynchronized** | Race condition occurs | 200,000 | **Under 200,000** (e.g. 185,432) |
+| **Synchronized** | Peterson's Solution | 200,000 | **Exactly 200,000** |
+
+---
+
+### ✅ Synchronization Requirements Met
+* **Mutual Exclusion:** Guaranteed via `flag` and `turn` variables.
+* **Progress:** Threads can enter the critical section if it is free.
+* **Bounded Waiting:** The `turn` variable ensures fairness and prevents starvation.
+
+---
+**Note:** In `PetersonAlgorithm.java`, the `volatile` keyword is used to ensure memory visibility between threads.
