@@ -2,12 +2,6 @@
 
 This project is a practical demonstration of synchronization mechanisms in Operating Systems, specifically focusing on solving the **Critical Section Problem** using **Peterson's Algorithm**.
 
-## 🎓 Academic Context
-* [cite_start]**Institution:** CINEC Campus [cite: 1]
-* [cite_start]**Faculty:** Faculty of Computing [cite: 2]
-* [cite_start]**Course:** BSc (Hons) Software Engineering [cite: 3]
-* [cite_start]**Module:** IT2106 – Operating Systems [cite: 5]
-* [cite_start]**Assignment Type:** Group Project (Batch 05) [cite: 7]
 
 ## 📌 Project Overview
 [cite_start]The goal of this project is to demonstrate how synchronization mechanisms work to manage shared resources between multiple threads[cite: 10]. We have implemented two versions of a counter incrementation program:
